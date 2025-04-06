@@ -1,0 +1,196 @@
+/* styles.css */
+:root {
+    --neon-pink: #ff00ff;
+    --neon-green: #00ff00;
+    --neon-red: #ff0000;
+    --cyber-bg: #000a1f;
+    --cyber-border: #0ff;
+    --neon-yellow: #fff01f;
+    --matrix-green: #0f0;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: radial-gradient(circle at center, rgb(0, 0, 0), #400258);
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.cyber-label {
+    color: white;
+}
+
+.cyber-input::placeholder {
+    color: white;
+}
+.hud-item {
+    color: var(--neon-yellow);
+    text-shadow: 0 0 20px var(--neon-yellow);
+    font-size: 2.5rem;
+}
+.cyber-container {
+    position: relative;
+    padding: 2rem;
+    border: 3px solid var(--neon-pink);
+    box-shadow: 0 0 40px var(--neon-pink);
+    background: linear-gradient(45deg, #00000060, #00000070);
+    backdrop-filter: blur(5px);
+    max-width: 800px;
+    margin: 2rem auto;
+    z-index: 2;
+}
+
+.cyber-copyright {
+    position: fixed;
+    bottom: 12px;
+    right: 15px;
+    color: #44ff4422; /* Verde muy transparente */
+    font-size: 0.7rem;
+    font-family: 'Courier New', monospace;
+    z-index: 3;
+    text-shadow: 0 0 8px #44ff4466;
+    transition: all 0.3s;
+    background: linear-gradient(45deg, #00000020, #00000030);
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+.cyber-copyright:hover {
+    color: #44ff44;
+    text-shadow: 0 0 12px #44ff44;
+    background: #00000060;
+}
+
+.glitch {
+    position: relative;
+    color: var(--neon-green);
+    text-shadow: 3px 3px var(--neon-red),
+                -3px -3px var(--cyber-border);
+    animation: glitch 2s infinite;
+    font-size: 4rem;
+    text-align: center;
+    margin: 2rem 0;
+    filter: drop-shadow(0 0 10px var(--neon-green));
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.cyber-input {
+    background: #000;
+    border: 2px solid var(--cyber-border);
+    color: var(--neon-green);
+    padding: 1rem;
+    font-size: 1.5rem;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.cyber-input:focus {
+    outline: none;
+    box-shadow: 0 0 20px var(--cyber-border);
+    background: #000d2f;
+}
+
+.cyber-button {
+    background: #000;
+    border: 3px solid var(--neon-red);
+    color: var(--neon-green);
+    padding: 1rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    margin: 2rem 0;
+}
+
+.cyber-button:hover {
+    background: var(--neon-red);
+    color: #000;
+    transform: skew(-10deg);
+    box-shadow: 0 0 40px var(--neon-red);
+}
+
+.cyber-terminal {
+    background: #000;
+    border: 2px solid var(--neon-green);
+    padding: 1.5rem;
+    min-height: 120px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.terminal-output {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green);
+    padding: 2rem;
+}
+
+.scan-line {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--neon-green));
+    animation: scan 3s infinite;
+}
+
+@keyframes scan {
+    0% { top: 0; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+.cyber-gif {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    display: none;
+    border: 6px solid var(--neon-red);
+    box-shadow: 0 0 50px var(--neon-red);
+}
+
+.cyber-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        45deg,
+        #00000000 0%,
+        #ff00ff22 50%,
+        #00000000 100%
+    );
+    z-index: 998;
+    display: none;
+    animation: rgb-flicker 1s infinite;
+}
+
+@keyframes rgb-flicker {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+.cyber-hud {
+    border: 3px solid var(--neon-yellow);
+    padding: 2rem;
+    margin-top: 3rem;
+    background: #000000aa;
+}
